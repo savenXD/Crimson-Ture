@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pandas
+pyarrow
+requests
+lightgbm
+scikit-learn
+shap
+h3>=4
+matplotlib
+jupyter
