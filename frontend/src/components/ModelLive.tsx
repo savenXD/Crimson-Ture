@@ -100,8 +100,8 @@ export default function ModelLive() {
 
       <Section title="What is running" hint="The real trained model, loaded from disk right now.">
         <div className="stats3">
-          <Stat label="Model" value="LightGBM" sub={`v${model.version}`} />
-          <Stat label="Decision trees" value={trees.toLocaleString()} sub="3 models × 400" />
+          <Stat label="Model" value="Hybrid" sub="LGBM + XGBoost" />
+          <Stat label="Decision trees" value={trees.toLocaleString()} sub="4 models × 400" />
           <Stat label="Inputs" value={model.n_features} sub="per hexagon-hour" />
         </div>
         <p className="hint" style={{ margin: '12px 0 8px' }}>{model.objective}.</p>
@@ -116,19 +116,19 @@ export default function ModelLive() {
         <dl className="kv">
           <dt>Processor</dt><dd>{runtime.cpu}</dd><dt>Cores</dt><dd>{runtime.cores}</dd>
           <dt>Memory</dt><dd>{runtime.ram_gb ? `${runtime.ram_gb} GB` : '—'}</dd><dt>Device</dt><dd>{runtime.device}</dd>
-          <dt>Software</dt><dd>Python {runtime.python} · LightGBM {runtime.lightgbm}</dd><dt>System</dt><dd>{runtime.os}</dd>
+          <dt>Software</dt><dd>Python {runtime.python} · LightGBM {runtime.lightgbm} · XGBoost {runtime.xgboost}</dd><dt>System</dt><dd>{runtime.os}</dd>
           <dt>Output</dt><dd>{serving.hexagons.toLocaleString()} hexagons × {serving.hours} h = {serving.forecasts.toLocaleString()} forecasts</dd>
         </dl>
       </Section>
 
-      <Section title="Run it live" hint="Pick an area and an hour. The server builds the inputs and runs all three models right now.">
+      <Section title="Run it live" hint="Pick an area and an hour. The server builds the inputs and runs all four models right now.">
         <Live meta={meta} />
       </Section>
 
       <Section title="How a forecast is made">
         <ol className="steps-l">
           <li>For an area and an hour, collect its conditions: the weather forecast, hours from Diwali night, recent farm-fire counts, and local roads and land use.</li>
-          <li>Three sets of trees each read those conditions and give a low, likely and high PM2.5.</li>
+          <li>Three LightGBM quantile models give a low, likely and high PM2.5; the likely value is blended with an XGBoost model and kept inside the low–high range.</li>
           <li>The likely value is converted to the Indian AQI and coloured on the map.</li>
           <li>It doesn't use yesterday's pollution or nearby sensor readings, so it can run anywhere. That also means it can't correct itself from fresh sensor data.</li>
         </ol>

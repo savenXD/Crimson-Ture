@@ -14,6 +14,7 @@ import lightgbm as lgb
 import numpy as np
 import pandas as pd
 import requests
+import xgboost as xgb
 
 from ml import predict as P
 from ml.config import MODELS, PROC, RAW
@@ -48,7 +49,12 @@ def main():
     models = {q: lgb.Booster(model_file=str(MODELS / f"q{q}.txt")) for q in (10, 50, 90)}
     saved = pd.read_parquet(PROC / "predictions.parquet")
     pick = X.sample(200, random_state=11)
-    mid = np.sort(np.stack([np.expm1(models[q].predict(pick[FEATURES])) for q in (10, 50, 90)]), axis=0)[1]
+    q = {k: np.expm1(m.predict(pick[FEATURES])) for k, m in models.items()}
+    # same hybrid as ml/predict.py: LightGBM + XGBoost median blended in log space, clipped to P10-P90
+    bw = json.loads((MODELS / "blend.json").read_text())
+    xg = xgb.XGBRegressor(); xg.load_model(str(MODELS / "xgb_q50.json"))
+    blend = np.expm1(bw["lightgbm"] * np.log1p(q[50]) + bw["xgboost"] * xg.predict(pick[FEATURES]))
+    mid = np.clip(blend, np.minimum(q[10], q[90]), np.maximum(q[10], q[90]))
     ref = saved.set_index(["h3", "t"]).p50.reindex(list(zip(pick.h3, pick.t.astype(int)))).values
     d = np.abs(mid - ref)
     check("200 random hexagon-hours equal the saved forecast", bool((d <= 0.15).all()), f"max difference {d.max():.2f} µg/m³")

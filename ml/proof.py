@@ -88,7 +88,7 @@ def latest(nm, delhi_only=True):
 
 def fingerprints():
     fs = {}
-    for f in [MODELS / "q10.txt", MODELS / "q50.txt", MODELS / "q90.txt", MODELS / "metrics.json", PROC / "predictions.parquet", PROC / "hex_grid.parquet"]:
+    for f in [MODELS / "q10.txt", MODELS / "q50.txt", MODELS / "q90.txt", MODELS / "xgb_q50.json", MODELS / "blend.json", MODELS / "metrics.json", PROC / "predictions.parquet", PROC / "hex_grid.parquet"]:
         if f.exists():
             fs[f.name] = {"sha256": hashlib.sha256(f.read_bytes()).hexdigest(), "bytes": f.stat().st_size}
     return fs

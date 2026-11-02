@@ -28,11 +28,11 @@ export type Stage = { id: string; label: string; state: 'done' | 'running' | 'pe
 export const getStatus = () => j<{ stages: Stage[] }>('/api/status')
 
 export type ModelInfo = {
-  model: { family: string; version: string; objective: string; params: Record<string, number>; n_features: number
+  model: { family: string; version: string; xgboost: string; objective: string; params: Record<string, number>; n_features: number
     files: { name: string; role: string; kb: number; sha: string; trees: number; trained: string }[] }
   features: { name: string; label: string; group: string; gain: number }[]
   training: { rows?: number; stations?: number; seasons?: number[] }
-  runtime: { python: string; lightgbm: string; cpu: string; cores: number; ram_gb: number | null; os: string; device: string }
+  runtime: { python: string; lightgbm: string; xgboost: string; cpu: string; cores: number; ram_gb: number | null; os: string; device: string }
   serving: { hexagons: number; hours: number; forecasts: number; start: string }
   freshness: Record<string, string | number | null>
   sources: { name: string; detail: string }[]

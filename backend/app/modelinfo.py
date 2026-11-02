@@ -11,6 +11,7 @@ from functools import lru_cache
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
+import xgboost as xgb
 
 from ml import predict as P
 from ml.aqi import category, pm25_to_aqi
@@ -29,8 +30,9 @@ LABELS = {
     "road_major_km": "Major road length", "road_all_km": "All road length", "road_density": "Road density",
     "industrial_frac": "Industrial areas", "green_frac": "Parks & greenery", "residential_frac": "Residential areas",
     "n_school": "Schools", "n_hospital": "Hospitals & clinics", "n_market": "Markets",
+    "dist_monitor_km": "Distance to nearest monitor", "nbr_level": "Nearby monitors: usual level (log)", "nbr_diwali_uplift": "Nearby monitors: Diwali rise (log)",
 }
-UNITS = {"temperature_2m": "°C", "relative_humidity_2m": "%", "wind_speed_10m": "km/h", "precipitation": "mm",
+UNITS = {"dist_monitor_km": "km", "temperature_2m": "°C", "relative_humidity_2m": "%", "wind_speed_10m": "km/h", "precipitation": "mm",
          "boundary_layer_height": "m", "surface_pressure": "hPa", "hours_from_diwali": "h", "ventilation": "×1000 m²/s",
          "road_major_km": "km", "road_all_km": "km", "road_density": "km/km²"}
 
@@ -38,6 +40,14 @@ UNITS = {"temperature_2m": "°C", "relative_humidity_2m": "%", "wind_speed_10m":
 @lru_cache
 def boosters():
     return {q: lgb.Booster(model_file=str(MODELS / f"q{q}.txt")) for q in (10, 50, 90)}
+
+
+@lru_cache
+def hybrid():
+    """XGBoost median and the log-space blend weights, exactly as ml/predict.py uses them."""
+    xg = xgb.XGBRegressor()
+    xg.load_model(str(MODELS / "xgb_q50.json"))
+    return xg, json.loads((MODELS / "blend.json").read_text())
 
 
 @lru_cache
@@ -76,6 +86,10 @@ def info():
         f = MODELS / f"q{q}.txt"
         files.append({"name": f.name, "role": {10: "Low (P10)", 50: "Likely (P50)", 90: "High (P90)"}[q], "kb": round(f.stat().st_size / 1024),
                       "sha": hashlib.sha256(f.read_bytes()).hexdigest()[:12], "trees": b[q].num_trees(), "trained": _iso(f)})
+    xg, bw = hybrid()
+    f = MODELS / "xgb_q50.json"
+    files.append({"name": f.name, "role": "Likely (XGBoost)", "kb": round(f.stat().st_size / 1024),
+                  "sha": hashlib.sha256(f.read_bytes()).hexdigest()[:12], "trees": xg.get_booster().num_boosted_rounds(), "trained": _iso(f)})
     metrics = json.loads((MODELS / "metrics.json").read_text()) if (MODELS / "metrics.json").exists() else {}
     grid, w, fires = inputs()
     last_fire = fires.dropna()
@@ -85,14 +99,15 @@ def info():
         aq_last = str(pd.to_datetime(pd.read_parquet(RAW / "pm25_hourly.parquet", columns=["ts"]).ts, utc=True).max())
     return {
         "model": {
-            "family": "LightGBM gradient-boosted decision trees", "version": lgb.__version__,
-            "objective": "Quantile regression (3 models: 10th, 50th, 90th percentile) on log(1 + PM2.5)",
+            "family": "Hybrid: LightGBM quantile trees + XGBoost median", "version": lgb.__version__, "xgboost": xgb.__version__,
+            "objective": (f"LightGBM quantile regression (10th, 50th, 90th percentile) on log(1 + PM2.5); the likely value blends "
+                          f"LightGBM {bw['lightgbm']:.2f} / XGBoost {bw['xgboost']:.2f} in log space, clipped to the P10-P90 range"),
             "params": {k: v for k, v in PARAMS.items() if k in ("n_estimators", "learning_rate", "num_leaves", "min_child_samples", "subsample", "colsample_bytree", "reg_lambda")},
             "files": files, "n_features": len(FEATURES),
         },
         "features": [{"name": f, "label": LABELS.get(f, f), "group": GROUP_OF.get(f, "Other"), "gain": round(float(imp.get(f, 0)), 4)} for f in imp.index],
         "training": {"rows": metrics.get("rows"), "stations": metrics.get("stations"), "seasons": metrics.get("seasons")},
-        "runtime": {"python": sys.version.split()[0], "lightgbm": lgb.__version__, "cpu": _cpu(), "cores": os.cpu_count(), "ram_gb": _ram_gb(),
+        "runtime": {"python": sys.version.split()[0], "lightgbm": lgb.__version__, "xgboost": xgb.__version__, "cpu": _cpu(), "cores": os.cpu_count(), "ram_gb": _ram_gb(),
                     "os": f"{platform.system()} {platform.release()}", "device": "CPU (no GPU used)"},
         "serving": {"hexagons": int(len(grid)), "hours": P.HOURS, "forecasts": int(len(grid) * P.HOURS), "start": P.START.isoformat()},
         "freshness": {
@@ -122,9 +137,12 @@ def live(h3: str, t: int):
     row = X[FEATURES]
     b = boosters()
     out = {q: float(np.expm1(b[q].predict(row)[0])) for q in (10, 50, 90)}
+    xg, bw = hybrid()
+    blend = float(np.expm1(bw["lightgbm"] * np.log1p(out[50]) + bw["xgboost"] * xg.predict(row)[0]))
     contrib = b[50].predict(row, pred_contrib=True)[0]
     t2 = time.perf_counter()
-    lo, mid, hi = sorted(out.values())
+    lo, hi = min(out[10], out[90]), max(out[10], out[90])
+    mid = min(max(blend, lo), hi)
     items = []
     for i, f in enumerate(FEATURES):
         v = row.iloc[0][f]
@@ -145,5 +163,5 @@ def live(h3: str, t: int):
         "inputs": items,
         "timing_ms": {"features": round((t1 - t0) * 1000, 1), "model": round((t2 - t1) * 1000, 1), "total": round((t2 - t0) * 1000, 1)},
         "check": {"saved_p50": saved, "matches": None if saved is None else abs(saved - mid) <= 0.15},
-        "trees_evaluated": sum(b[q].num_trees() for q in b),
+        "trees_evaluated": sum(b[q].num_trees() for q in b) + xg.get_booster().num_boosted_rounds(),
     }
