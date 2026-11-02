@@ -1,0 +1,9 @@
+{
+  "name": "nox-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NOx: Delhi Diwali air-quality forecast, desktop app",
+  "main": "main.js",
+  "scripts": { "start": "env -u ELECTRON_RUN_AS_NODE electron ." },
+  "devDependencies": { "electron": "^33.0.0" }
+}

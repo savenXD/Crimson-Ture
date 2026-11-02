@@ -1,0 +1,141 @@
+{
+ "rows": 836036,
+ "stations": 101,
+ "seasons": [
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ "blend_weights": {
+  "lightgbm": 0.15000000000000002,
+  "xgboost": 0.85
+ },
+ "hide_a_station": {
+  "lightgbm_only": {
+   "mae": 43.0,
+   "rmse": 73.5,
+   "r2": 0.656,
+   "aqi_category_acc": 0.575,
+   "n": 836036
+  },
+  "xgboost_only": {
+   "mae": 42.1,
+   "rmse": 72.0,
+   "r2": 0.67,
+   "aqi_category_acc": 0.58,
+   "n": 836036
+  },
+  "model": {
+   "mae": 42.1,
+   "rmse": 72.0,
+   "r2": 0.67,
+   "aqi_category_acc": 0.58,
+   "n": 836036
+  },
+  "model_same_rows": {
+   "mae": 42.0,
+   "rmse": 72.0,
+   "r2": 0.671,
+   "aqi_category_acc": 0.581,
+   "n": 830506
+  },
+  "copy_nearest_station": {
+   "mae": 45.3,
+   "rmse": 83.0,
+   "r2": 0.563,
+   "aqi_category_acc": 0.575,
+   "n": 830506
+  },
+  "cams_global_model": {
+   "mae": 59.9,
+   "rmse": 93.9,
+   "r2": 0.207,
+   "aqi_category_acc": 0.319,
+   "n": 271856
+  },
+  "model_same_rows_as_cams": {
+   "mae": 36.4,
+   "rmse": 61.3,
+   "r2": 0.662,
+   "aqi_category_acc": 0.55,
+   "n": 271856
+  }
+ },
+ "by_phase": {
+  "before": {
+   "mae": 24.6,
+   "rmse": 50.5,
+   "r2": 0.635,
+   "aqi_category_acc": 0.561,
+   "n": 356899
+  },
+  "during": {
+   "mae": 82.9,
+   "rmse": 136.7,
+   "r2": 0.557,
+   "aqi_category_acc": 0.67,
+   "n": 15534
+  },
+  "after": {
+   "mae": 54.1,
+   "rmse": 82.2,
+   "r2": 0.551,
+   "aqi_category_acc": 0.592,
+   "n": 463603
+  }
+ },
+ "held_out_season": {
+  "2017": {
+   "mae": 76.0,
+   "rmse": 126.9,
+   "r2": 0.208,
+   "aqi_category_acc": 0.473,
+   "n": 1336,
+   "window": "Diwali \u00b14 days",
+   "peak_actual": 389.0,
+   "peak_predicted": 396.0
+  },
+  "2019": {
+   "mae": 68.6,
+   "rmse": 101.1,
+   "r2": 0.357,
+   "aqi_category_acc": 0.56,
+   "n": 11792,
+   "window": "Diwali \u00b14 days",
+   "peak_actual": 419.0,
+   "peak_predicted": 711.0
+  },
+  "2025": {
+   "mae": 52.4,
+   "rmse": 94.9,
+   "r2": 0.284,
+   "aqi_category_acc": 0.494,
+   "n": 11013,
+   "window": "Diwali \u00b14 days",
+   "peak_actual": 335.0,
+   "peak_predicted": 431.0
+  }
+ },
+ "interval_p10_p90_coverage_in_sample": 0.801,
+ "top_features": {
+  "hours_from_diwali": 0.245,
+  "fire_lag1": 0.093,
+  "fire_3d": 0.091,
+  "fire_lag3": 0.077,
+  "temperature_2m": 0.076,
+  "ventilation": 0.051,
+  "fire_lag2": 0.048,
+  "surface_pressure": 0.039,
+  "lat": 0.036,
+  "boundary_layer_height": 0.032
+ }
+}

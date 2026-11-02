@@ -1,11 +1,12 @@
 fastapi
 uvicorn[standard]
 pandas
+numpy
 pyarrow
 requests
 lightgbm
+xgboost
 scikit-learn
-shap
 h3>=4
-matplotlib
-jupyter
+qrcode
+pywebpush

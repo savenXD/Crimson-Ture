@@ -5,8 +5,16 @@ __pycache__/
 .env
 node_modules/
 frontend/dist/
-ml/data/raw/*
-ml/data/processed/*
-!ml/data/raw/.gitkeep
-!ml/data/processed/.gitkeep
 *.lgb
+.nox.pid
+
+# raw downloads are big: keep out of git, but keep the small station lists and all built results
+ml/data/raw/*
+!ml/data/raw/.gitkeep
+!ml/data/raw/stations.json
+!ml/data/raw/stations_all.json
+!ml/data/raw/sensors.json
+ml/models/progress.txt
+ml/models/train.log
+.nox/
+electron/node_modules/

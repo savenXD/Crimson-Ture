@@ -1,32 +1,24 @@
-"""India National AQI (CPCB) sub-index for PM2.5 / PM10."""
+"""CPCB National AQI from PM2.5 (24h-average breakpoints, applied to hourly values)."""
+import numpy as np
 
-# (conc_lo, conc_hi, aqi_lo, aqi_hi, category)
-PM25_BREAKPOINTS = [
-    (0, 30, 0, 50, "Good"),
-    (31, 60, 51, 100, "Satisfactory"),
-    (61, 90, 101, 200, "Moderate"),
-    (91, 120, 201, 300, "Poor"),
-    (121, 250, 301, 400, "Very Poor"),
-    (251, 500, 401, 500, "Severe"),
-]
-
-PM10_BREAKPOINTS = [
-    (0, 50, 0, 50, "Good"),
-    (51, 100, 51, 100, "Satisfactory"),
-    (101, 250, 101, 200, "Moderate"),
-    (251, 350, 201, 300, "Poor"),
-    (351, 430, 301, 400, "Very Poor"),
-    (431, 800, 401, 500, "Severe"),
-]
+# (pm25_lo, pm25_hi, aqi_lo, aqi_hi)
+_BP = [(0, 30, 0, 50), (30, 60, 51, 100), (60, 90, 101, 200), (90, 120, 201, 300),
+       (120, 250, 301, 400), (250, 500, 401, 500)]
+CATS = [(50, "Good"), (100, "Satisfactory"), (200, "Moderate"), (300, "Poor"), (400, "Very Poor"), (10**9, "Severe")]
 
 
-def sub_index(conc: float, breakpoints=PM25_BREAKPOINTS) -> tuple[int, str]:
-    """Linear interpolation inside the matching breakpoint band; capped at 500."""
-    if conc is None or conc < 0:
-        return 0, "Unknown"
-    for c_lo, c_hi, i_lo, i_hi, cat in breakpoints:
-        if conc <= c_hi:
-            c_lo = min(c_lo, conc)
-            aqi = i_lo + (i_hi - i_lo) * (conc - c_lo) / max(c_hi - c_lo, 1)
-            return round(aqi), cat
-    return 500, breakpoints[-1][4]
+def pm25_to_aqi(pm):
+    pm = np.asarray(pm, dtype=float)
+    out = np.full(pm.shape, np.nan)
+    for lo, hi, alo, ahi in _BP:
+        m = (pm >= lo) & (pm <= hi)
+        out[m] = alo + (pm[m] - lo) * (ahi - alo) / (hi - lo)
+    out[pm > 500] = 500 + (pm[pm > 500] - 500) * 0.2
+    return out
+
+
+def category(aqi):
+    for lim, name in CATS:
+        if aqi <= lim:
+            return name
+    return "Severe"

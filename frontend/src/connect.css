@@ -1,0 +1,9 @@
+.cp-wrap { position: relative; display: grid; }
+.cp-pop { position: absolute; right: calc(100% + 14px); top: 50%; width: 252px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+  opacity: 0; transform: translate(8px, -50%) scale(.98); pointer-events: none; transition: opacity .2s var(--ease), transform .25s var(--ease); z-index: 30; }
+.cp-pop.on { opacity: 1; transform: translate(0, -50%); pointer-events: auto; }
+.cp-pop b { font-size: 14px; } .cp-pop p { margin: 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+.cp-pop img { border-radius: 12px; border: 1px solid var(--line); margin: 4px 0; } .cp-ph { width: 180px; height: 180px; border-radius: 12px; background: var(--soft); }
+.cp-pop code { font-size: 12px; background: var(--soft); padding: 5px 9px; border-radius: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.cp-pop button.cp-copy { width: auto; height: auto; padding: 6px 12px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); border-radius: 9px; }
+.cp-pop small { font-size: 10.5px; color: var(--faint); line-height: 1.4; }

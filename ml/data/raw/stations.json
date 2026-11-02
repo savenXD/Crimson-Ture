@@ -1,0 +1,706 @@
+[
+ {
+  "id": 17,
+  "name": "R K Puram, Delhi - DPCC",
+  "lat": 28.563262,
+  "lon": 77.186937,
+  "first": "2016-02-05",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 50,
+  "name": "Punjabi Bagh, Delhi - DPCC",
+  "lat": 28.674045,
+  "lon": 77.131023,
+  "first": "2016-02-05",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 235,
+  "name": "Anand Vihar, New Delhi - DPCC",
+  "lat": 28.646835,
+  "lon": 77.316032,
+  "first": "2016-02-05",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 301,
+  "name": "Vikas Sadan, Gurugram - HSPCB",
+  "lat": 28.4501238,
+  "lon": 77.0263051,
+  "first": "2016-03-25",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5404,
+  "name": "Pusa, Delhi - IMD",
+  "lat": 28.639645,
+  "lon": 77.146263,
+  "first": "2017-09-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5509,
+  "name": "Anand Vihar, Delhi - DPCC",
+  "lat": 28.647622000000002,
+  "lon": 77.315809,
+  "first": "2018-03-09",
+  "last": "2022-10-31"
+ },
+ {
+  "id": 5541,
+  "name": "Burari Crossing, New Delhi - IMD",
+  "lat": 28.7256504,
+  "lon": 77.2011573,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5570,
+  "name": "Aya Nagar, New Delhi - IMD",
+  "lat": 28.474261,
+  "lon": 77.131606,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5586,
+  "name": "Sirifort, Delhi - CPCB",
+  "lat": 28.5504249,
+  "lon": 77.2159377,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5598,
+  "name": "Sector - 125, Noida, UP - UPPCB",
+  "lat": 28.5447608,
+  "lon": 77.3231257,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5610,
+  "name": "North Campus, DU, Delhi - IMD",
+  "lat": 28.6573814,
+  "lon": 77.1585447,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5613,
+  "name": "ITO, New Delhi - CPCB",
+  "lat": 28.628624,
+  "lon": 77.24106,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5616,
+  "name": "Sector - 62, Noida, UP - IMD",
+  "lat": 28.6245479,
+  "lon": 77.3577104,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5617,
+  "name": "Sector- 16A, Faridabad - HSPCB",
+  "lat": 28.4088421,
+  "lon": 77.3099081,
+  "first": "2018-03-09",
+  "last": "2022-10-31"
+ },
+ {
+  "id": 5622,
+  "name": "NSIT Dwarka, Delhi - CPCB",
+  "lat": 28.60909,
+  "lon": 77.0325413,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5626,
+  "name": "DTU, New Delhi - CPCB",
+  "lat": 28.7500499,
+  "lon": 77.1112615,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5627,
+  "name": "CRRI Mathura Road, New Delhi - IMD",
+  "lat": 28.5512005,
+  "lon": 77.2735737,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5630,
+  "name": "Shadipur, Delhi - CPCB",
+  "lat": 28.6514781,
+  "lon": 77.1473105,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5634,
+  "name": "Lodhi Road, New Delhi - IMD",
+  "lat": 28.5918245,
+  "lon": 77.2273074,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5650,
+  "name": "IGI Airport (T3), Delhi - IMD",
+  "lat": 28.5627763,
+  "lon": 77.1180053,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 5665,
+  "name": "Vasundhara, Ghaziabad - UPPCB",
+  "lat": 28.6603346,
+  "lon": 77.3572563,
+  "first": "2018-03-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6356,
+  "name": "Pusa, Delhi - DPCC",
+  "lat": 28.639645,
+  "lon": 77.146262,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6357,
+  "name": "Punjabi Bagh, Delhi - DPCC",
+  "lat": 28.674045000000003,
+  "lon": 77.13102300000001,
+  "first": "2018-08-10",
+  "last": "2022-10-16"
+ },
+ {
+  "id": 6358,
+  "name": "Mandir Marg, New Delhi - DPCC",
+  "lat": 28.636429,
+  "lon": 77.201067,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6359,
+  "name": "IHBAS, Dilshad Garden,New Delhi - CPCB",
+  "lat": 28.6811736,
+  "lon": 77.3025234,
+  "first": "2018-04-28",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6924,
+  "name": "Indirapuram, Ghaziabad - UPPCB",
+  "lat": 28.646233,
+  "lon": 77.358075,
+  "first": "2019-04-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6929,
+  "name": "Major Dhyan Chand National Stadium, Delhi - DPCC",
+  "lat": 28.611281,
+  "lon": 77.237738,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6931,
+  "name": "Dwarka-Sector 8, Delhi - DPCC",
+  "lat": 28.5710274,
+  "lon": 77.0719006,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6932,
+  "name": "Alipur, Delhi - DPCC",
+  "lat": 28.815329,
+  "lon": 77.15301,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6934,
+  "name": "Dr. Karni Singh Shooting Range, Delhi - DPCC",
+  "lat": 28.498571,
+  "lon": 77.26484,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6936,
+  "name": "Arya Nagar, Bahadurgarh - HSPCB",
+  "lat": 28.6701,
+  "lon": 76.9254,
+  "first": "2019-02-13",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6938,
+  "name": "Vivek Vihar, Delhi - DPCC",
+  "lat": 28.672342,
+  "lon": 77.31526,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6953,
+  "name": "Sector-2 IMT, Manesar - HSPCB",
+  "lat": 28.360699,
+  "lon": 76.93609,
+  "first": "2019-01-02",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6957,
+  "name": "Jawaharlal Nehru Stadium, Delhi - DPCC",
+  "lat": 28.58028,
+  "lon": 77.233829,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6960,
+  "name": "Patparganj, Delhi - DPCC",
+  "lat": 28.623748,
+  "lon": 77.287205,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6972,
+  "name": "Nathu Colony, Ballabgarh - HSPCB",
+  "lat": 28.3419248,
+  "lon": 77.319699,
+  "first": "2019-02-13",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6978,
+  "name": "Knowledge Park - III, Greater Noida - UPPCB",
+  "lat": 28.47272,
+  "lon": 77.482,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6980,
+  "name": "Sector-1, Noida - UPPCB",
+  "lat": 28.589247,
+  "lon": 77.321962,
+  "first": "2019-06-28",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6986,
+  "name": "Knowledge Park - V, Greater Noida - UPPCB",
+  "lat": 28.557054,
+  "lon": 77.453663,
+  "first": "2019-06-28",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6988,
+  "name": "Sector-116, Noida - UPPCB",
+  "lat": 28.56923,
+  "lon": 77.393848,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 7005,
+  "name": "Loni, Ghaziabad - UPPCB",
+  "lat": 28.757294,
+  "lon": 77.278792,
+  "first": "2019-04-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 7044,
+  "name": "R K Puram, Delhi - DPCC",
+  "lat": 28.563262000000005,
+  "lon": 77.186937,
+  "first": "2018-08-10",
+  "last": "2022-10-31"
+ },
+ {
+  "id": 8118,
+  "name": "New Delhi",
+  "lat": 28.63576,
+  "lon": 77.22445,
+  "first": "2016-11-09",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8235,
+  "name": "Jahangirpuri, Delhi - DPCC",
+  "lat": 28.73282,
+  "lon": 77.170633,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8239,
+  "name": "Okhla Phase-2, Delhi - DPCC",
+  "lat": 28.530785,
+  "lon": 77.271255,
+  "first": "2018-08-22",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8365,
+  "name": "Nehru Nagar, Delhi - DPCC",
+  "lat": 28.56789,
+  "lon": 77.250515,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8472,
+  "name": "Bawana, Delhi - DPCC",
+  "lat": 28.7762,
+  "lon": 77.051074,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8475,
+  "name": "Sonia Vihar, Delhi - DPCC",
+  "lat": 28.710508,
+  "lon": 77.249485,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8915,
+  "name": "Wazirpur, Delhi - DPCC",
+  "lat": 28.699793,
+  "lon": 77.165453,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 8917,
+  "name": "Ashok Vihar, Delhi - DPCC",
+  "lat": 28.695381,
+  "lon": 77.181665,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10484,
+  "name": "Sri Aurobindo Marg, Delhi - DPCC",
+  "lat": 28.531346,
+  "lon": 77.190156,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10485,
+  "name": "Narela, Delhi - DPCC",
+  "lat": 28.822836,
+  "lon": 77.101981,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10486,
+  "name": "Mundka, Delhi - DPCC",
+  "lat": 28.684678,
+  "lon": 77.076574,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10488,
+  "name": "Najafgarh, Delhi - DPCC",
+  "lat": 28.570173,
+  "lon": 76.933762,
+  "first": "2018-12-15",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10489,
+  "name": "ITO, Delhi - CPCB",
+  "lat": 28.628624,
+  "lon": 77.24106,
+  "first": "2020-01-20",
+  "last": "2022-10-31"
+ },
+ {
+  "id": 10820,
+  "name": "Sector 30, Faridabad - HSPCB",
+  "lat": 28.4417,
+  "lon": 77.3217,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10825,
+  "name": "Sector-51, Gurugram - HSPCB",
+  "lat": 28.4227,
+  "lon": 77.0667,
+  "first": "2020-03-11",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10831,
+  "name": "Rohini, Delhi - DPCC",
+  "lat": 28.732528,
+  "lon": 77.11992,
+  "first": "2018-08-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10900,
+  "name": "Teri Gram, Gurugram - HSPCB",
+  "lat": 28.4275,
+  "lon": 77.1465,
+  "first": "2020-03-30",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10908,
+  "name": "Sector 11, Faridabad - HSPCB",
+  "lat": 28.376058,
+  "lon": 77.315741,
+  "first": "2020-03-11",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10919,
+  "name": "Sanjay Nagar, Ghaziabad - UPPCB",
+  "lat": 28.685382,
+  "lon": 77.453839,
+  "first": "2019-04-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10920,
+  "name": "New Industrial Town, Faridabad - HSPCB",
+  "lat": 28.39072,
+  "lon": 77.30059,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 10921,
+  "name": "NISE Gwal Pahari, Gurugram - IMD",
+  "lat": 28.422681,
+  "lon": 77.148944,
+  "first": "2018-11-16",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 11603,
+  "name": "Chandni Chowk, Delhi - IITM",
+  "lat": 28.656756,
+  "lon": 77.227234,
+  "first": "2020-11-13",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 11607,
+  "name": "Lodhi Road, Delhi - IITM",
+  "lat": 28.588333,
+  "lon": 77.221667,
+  "first": "2020-11-13",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 301388,
+  "name": "Sardar Patel Inter College, Baghpat - UPPCB",
+  "lat": 28.964949,
+  "lon": 77.278761,
+  "first": "2022-03-24",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 2860223,
+  "name": "GK1 (Oberoi Terrace)",
+  "lat": 28.5500047,
+  "lon": 77.2431058,
+  "first": "2024-05-22",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 3024966,
+  "name": "NASA GSFC Rutgers Calib. N8",
+  "lat": 28.31733,
+  "lon": 76.91603,
+  "first": "2024-08-20",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 3409496,
+  "name": "New Moti Bagh, Delhi - MHUA",
+  "lat": 28.57834,
+  "lon": 77.184,
+  "first": "2026-03-10",
+  "last": "2026-06-13"
+ },
+ {
+  "id": 3410004,
+  "name": "Amity University, Panchgaon - IITM",
+  "lat": 28.3153,
+  "lon": 76.9143,
+  "first": "2025-02-18",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 4663956,
+  "name": "Santushti Apartments, Vasant Kunj",
+  "lat": 28.5266,
+  "lon": 77.1493,
+  "first": "2025-06-08",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 4712609,
+  "name": "Air Check",
+  "lat": 28.623056,
+  "lon": 77.234167,
+  "first": "2026-01-28",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6105800,
+  "name": "Sector 1, Noida extension",
+  "lat": 28.583491,
+  "lon": 77.431714,
+  "first": "2025-10-23",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6119272,
+  "name": "Sector - 5, Vasundhara, Ghaziabad, Uttar Pradesh ",
+  "lat": 28.658398,
+  "lon": 77.3780531,
+  "first": "2025-11-04",
+  "last": "2026-03-26"
+ },
+ {
+  "id": 6125489,
+  "name": "Uptitude Cloud Pvt Ltd - Sector 62, GGN",
+  "lat": 28.40240847053802,
+  "lon": 77.08477464826682,
+  "first": "2025-11-10",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6145551,
+  "name": "Anand Lok",
+  "lat": 28.5587,
+  "lon": 77.21886,
+  "first": "2025-11-28",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6148686,
+  "name": "IIT Delhi, Delhi - IITM",
+  "lat": 28.54246,
+  "lon": 77.191651,
+  "first": "2025-12-01",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6254594,
+  "name": "Talkatora Garden, Delhi - DPCC",
+  "lat": 28.62181,
+  "lon": 77.1944633,
+  "first": "2026-02-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6254663,
+  "name": "JNU, Delhi - DPCC",
+  "lat": 28.540721,
+  "lon": 77.168544,
+  "first": "2026-02-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6254664,
+  "name": "NSUT Jaffarpur, Delhi - DPCC",
+  "lat": 28.594004,
+  "lon": 76.909423,
+  "first": "2026-02-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6254665,
+  "name": "Commonwealth Sports Complex, Delhi - DPCC",
+  "lat": 28.615828,
+  "lon": 77.271992,
+  "first": "2026-02-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6254666,
+  "name": "IGNOU_Maidan Garhi, Delhi - DPCC",
+  "lat": 28.493624,
+  "lon": 77.201159,
+  "first": "2026-02-27",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6257818,
+  "name": "Cantonment Area, Delhi - DPCC",
+  "lat": 28.594169,
+  "lon": 77.1251,
+  "first": "2026-03-02",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6299494,
+  "name": "Prashant Garden, Khora - UPPCB",
+  "lat": 28.61119,
+  "lon": 77.34206,
+  "first": "2026-04-07",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6299678,
+  "name": "Ved Vihar-Loni, Ghaziabad - UPPCB",
+  "lat": 28.739153,
+  "lon": 77.273668,
+  "first": "2026-04-07",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6311324,
+  "name": "Govindpuram, Ghaziabad - UPPCB",
+  "lat": 28.694528,
+  "lon": 77.494705,
+  "first": "2026-04-17",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6458520,
+  "name": "Wave City, Ghaziabad - UPPCB",
+  "lat": 28.646675,
+  "lon": 77.489049,
+  "first": "2026-07-24",
+  "last": "2026-10-31"
+ },
+ {
+  "id": 6551511,
+  "name": "Sector-26, Noida",
+  "lat": 28.57957,
+  "lon": 77.33481,
+  "first": "2026-10-12",
+  "last": "2026-10-31"
+ }
+]

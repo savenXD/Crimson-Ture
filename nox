@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# NOx launcher.  ./nox setup (once) · ./nox run (opens in seconds once built) · ./nox forecast (latest weather, ~30 s) · ./nox refresh (new data + retrain) · ./nox desktop (Electron app)
+set -e
+cd "$(dirname "$0")"
+PY=.venv/bin/python
+b() { printf '\033[1m%s\033[0m\n' "$*"; }
+
+setup() {
+  b "Setting up NOx"
+  [ -d .venv ] || python3 -m venv .venv
+  $PY -m pip install -q --upgrade pip
+  $PY -m pip install -q -r requirements.txt
+  (cd frontend && npm install --no-audit --no-fund --silent)
+  if [ ! -f .env ]; then
+    echo "Two free API keys are needed (see .env.example)."
+    read -rp "OpenAQ key  (https://explore.openaq.org/account): " a
+    read -rp "NASA FIRMS key (https://firms.modaps.eosdis.nasa.gov/api/map_key/): " f
+    printf 'OPENAQ_API_KEY=%s\nFIRMS_MAP_KEY=%s\n' "$a" "$f" > .env && chmod 600 .env
+  fi
+  b "Setup done. Next:  ./nox run"
+}
+
+serve() {
+  [ -f frontend/node_modules/.bin/vite ] || (cd frontend && npm install --no-audit --no-fund --silent)
+  if [ ! -d frontend/dist ] || [ -n "$(find frontend/src frontend/index.html -newer frontend/dist/index.html 2>/dev/null | head -1)" ]; then
+    b "Building website"; (cd frontend && npm run build --silent)
+  fi
+  [ -f .nox.pid ] && kill "$(cat .nox.pid)" 2>/dev/null || true
+  port=8000; while (echo > /dev/tcp/127.0.0.1/$port) 2>/dev/null; do port=$((port + 1)); done
+  b "NOx is running at http://localhost:$port   (Ctrl+C to stop)"
+  ( for _ in $(seq 40); do sleep 0.5; curl -s "localhost:$port/api/meta" >/dev/null 2>&1 && { xdg-open "http://localhost:$port" >/dev/null 2>&1 || open "http://localhost:$port" >/dev/null 2>&1 || true; break; }; done ) &
+  $PY -m uvicorn backend.app.main:app --host 0.0.0.0 --port "$port" --log-level warning &
+  sleep 2; $PY -m backend.app.lan "$port" || true
+  echo $! > .nox.pid
+  trap 'kill $(cat .nox.pid) 2>/dev/null; rm -f .nox.pid' EXIT
+  wait
+}
+
+case "${1:-run}" in
+  setup)   setup ;;
+  run)     [ -d .venv ] || setup; b "Checking data and model"; $PY -m ml.pipeline; serve ;;
+  forecast) [ -d .venv ] || setup; b "Updating forecast with the latest weather"; $PY -m ml.pipeline --forecast; serve ;;
+  desktop) [ -d .venv ] || setup; $PY -m ml.pipeline; [ -d electron/node_modules ] || (cd electron && npm install --no-audit --no-fund --silent); b "Opening NOx desktop"; (cd electron && npm start --silent) ;;
+  verify)  $PY -m ml.verify ;;
+  refresh) [ -d .venv ] || setup; b "Refreshing data and retraining"; $PY -m ml.pipeline --refresh; serve ;;
+  *) echo "usage: ./nox setup | run | forecast | verify | refresh | desktop" ;;
+esac
